@@ -2,9 +2,9 @@
 
 ## DATE: 31.08.2023
 
-## AIM: To create a Trigger using PL/SQL.
+### AIM: To create a Trigger using PL/SQL.
 
-## Steps:
+### Steps:
 1. Create employee table with following attributes (empid NUMBER, empname VARCHAR(10), dept VARCHAR(10),salary NUMBER);
 2. Create salary_log table with following attributes (log_id NUMBER GENERATED ALWAYS AS IDENTITY, empid NUMBER,empname VARCHAR(10),old_salary NUMBER,new_salary NUMBER,update_date DATE);
 3. Create a trigger named as log_salary-update.
@@ -14,22 +14,14 @@
 7. Whenever a salary is updated for the employee it must be logged into the salary_log table with old salary and new salary.
 8. Display the employee table, salary_log table.
 
-## Program:
-
-### Create Employee table
-```
+### Program:
+```-- Create the employee table
 CREATE TABLE employed(
   empid NUMBER,
   empname VARCHAR2(10),
   dept VARCHAR2(10),
   salary NUMBER
 );
-```
-![ooodd1](https://github.com/Thirukaalathessvarar-S/Ex-No-5-Creating-Triggers-using-PL-SQL/assets/121166390/8eecbd29-24b7-481c-9c03-8ef973a7a5cc)
-
-
-### Create Salary log table
-```
 
 CREATE TABLE sal_log (
   log_id NUMBER GENERATED ALWAYS AS IDENTITY,
@@ -39,11 +31,18 @@ CREATE TABLE sal_log (
   new_salary NUMBER,
   update_date DATE
 );
+-- Insert the values in the employee table
+insert into employed values(1,'Shakthi','IT',1000000);
+insert into employed values(2,'Suju','SALES',500000)
+
 ```
-![ooood2](https://github.com/Thirukaalathessvarar-S/Ex-No-5-Creating-Triggers-using-PL-SQL/assets/121166390/b2495064-fcd9-4698-9a4c-7971e04e0e90)
+### Create employee table
+![WhatsApp Image 2023-09-26 at 22 22 49](https://github.com/DhanushPalani/Ex-No-5-Creating-Triggers-using-PL-SQL/assets/121594640/ab8e1001-ad81-4cee-b147-9e6ccbffe6b7)
 
+### Create salary_log table
+![WhatsApp Image 2023-09-26 at 22 23 14](https://github.com/DhanushPalani/Ex-No-5-Creating-Triggers-using-PL-SQL/assets/121594640/86466cf5-53f7-4063-9ccc-e364e7072d5e)
 
-### PLSQL Trigger Code
+### PLSQL Trigger code
 ```
 -- Create the trigger
 CREATE OR REPLACE TRIGGER log_sal_update
@@ -56,34 +55,24 @@ BEGIN
   END IF;
 END;
 /
-```
-![oooood3](https://github.com/Thirukaalathessvarar-S/Ex-No-5-Creating-Triggers-using-PL-SQL/assets/121166390/d4481b95-66bd-4dd9-9e92-33eac11e4799)
-
-
-### Insert the value
-```
 -- Insert the values in the employee table
-insert into employed values(1,'Eswar','AIDS',1000000);
-insert into employed values(2,'Lingesh','SALES',500000);
-```
+insert into employed values(1,'Shakthi','IT',1000000);
+insert into employed values(2,'Suju','SALES',500000);
 
-### Update the salary
-```
 -- Update the salary of an employee
 UPDATE employed
 SET salary = 60000
-WHERE empid = 1;
+WHERE empid = 1;
 -- Display the employee table
 SELECT * FROM employed;
 
 -- Display the salary_log table
-SELECT * FROM sal_log;
+SELECT * FROM sal_log;
 ```
 
-## Output:
-![dbms1_exp5](https://github.com/Thirukaalathessvarar-S/Ex-No-5-Creating-Triggers-using-PL-SQL/assets/121166390/f406b622-dcd8-465d-ac31-56162abee902)
+### Output:
+![WhatsApp Image 2023-09-26 at 22 29 52](https://github.com/DhanushPalani/Ex-No-5-Creating-Triggers-using-PL-SQL/assets/121594640/98d6405f-b231-485b-b7c5-38e605977906)
+![WhatsApp Image 2023-09-26 at 22 29 21](https://github.com/DhanushPalani/Ex-No-5-Creating-Triggers-using-PL-SQL/assets/121594640/c1caabb7-a19c-44b3-9343-e135eafc4d07)
 
-![dbms5_exp2](https://github.com/Thirukaalathessvarar-S/Ex-No-5-Creating-Triggers-using-PL-SQL/assets/121166390/7bc39a56-3c44-42e3-9550-b9fcf2610deb)
-
-## Result:
-The program has been implemented successfully.
+### Result:
+ The program has been implemented successfully
